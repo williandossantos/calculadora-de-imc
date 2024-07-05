@@ -18,10 +18,6 @@ btnCalcular.addEventListener("click", (e) =>{
       AlertError.abrir()
       return
    }
-   if(camposInput.focus){
-      AlertError.fechar()
-   }
-   
    
    let resultado = calculoIMC(peso, altura)
    displayMostreResultado(resultado)
@@ -29,6 +25,10 @@ btnCalcular.addEventListener("click", (e) =>{
    inputPeso.value = ""
    inputAltura.value = ""
 })
+
+inputPeso.oninput = () => AlertError.fechar()
+inputAltura.oninput = () => AlertError.fechar()
+
 
 let displayMostreResultado = (resultado) => {
    let mensagem = `Seu peso é ${resultado}`
@@ -41,5 +41,3 @@ let displayMostreResultado = (resultado) => {
 sempre verifica se o input esta sendo alterado.
 se estiver sendo alterado tira a mensagem error
 */
-inputPeso.oninput = () => AlertError.fechar()
-inputAltura.oninput = () => AlertError.fechar()
